@@ -7,9 +7,9 @@ terraform {
  }
 
  backend "s3" {
-   bucket = "tf-tuts-state"
-   key    = "state"
-   region = "eu-central-1"
+   bucket = "tf-remote-s3-bucket-kim-changehere"
+   key    = "state/terraform.tfstate"
+   region = "us-east-1"
  }
 }
 
