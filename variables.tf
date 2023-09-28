@@ -10,6 +10,12 @@ variable "instance_type" {
    default     = "t2.micro"
 }
 
+variable "key_pair" {
+  type = string
+  description = "Key pair"
+  default = "key_pair"
+}
+
 
 variable "name_tag" {
    type        = string
