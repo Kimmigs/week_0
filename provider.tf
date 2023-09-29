@@ -10,6 +10,9 @@ terraform {
    bucket = "tf-remote-s3-bucket-kim-changehere"
    key    = "state/terraform.tfstate"
    region = "us-east-1"
+   encrypt = true
+   dynamodb_table = "tf-s3-app-lock"
  }
 }
+
 
