@@ -3,10 +3,7 @@ pipeline {
     tools {
         terraform 'terraform'
     }
-    environment {
-        AWS_DEFAULT_REGION    = 'us-east-1'
-        SECRET_FILE_ID = .aws/credentials
-    }
+    
     stages {
         stage('Checkout Code') {
             steps {
@@ -14,6 +11,10 @@ pipeline {
             }
         }
         stage('Terraform Init') {
+            environment {
+                AWS_DEFAULT_REGION    = 'us-east-1'
+                SECRET_FILE_ID = credentials('1fef9a45-bc71-422c-a6b4-3107979f80f2')
+            }
             steps {
                 script {
                     sh 'terraform init'
