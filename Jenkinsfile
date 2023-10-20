@@ -5,7 +5,8 @@ pipeline {
     }
     environment {
         AWS_DEFAULT_REGION    = 'us-east-1'
-        IAM_INFO              = credentialsID: '387b4a4f-4357-4633-aedf-7f2094eb2c95'
+        SECRET_FILE_ID = credentials('1fef9a45-bc71-422c-a6b4-3107979f80f2')
+   
         
     }
     stages {
