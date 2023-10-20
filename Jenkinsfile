@@ -5,7 +5,7 @@ pipeline {
     }
     environment {
         AWS_DEFAULT_REGION    = 'us-east-1'
-        SECRET_FILE_ID = C:\Users\18432\week_0\.aws\credentials
+        SECRET_FILE_ID = .aws/credentials
     }
     stages {
         stage('Checkout Code') {
