@@ -5,8 +5,8 @@ pipeline {
     }
     environment {
         AWS_DEFAULT_REGION    = 'us-east-1'
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+        IAM_INFO              = credentialsID: '387b4a4f-4357-4633-aedf-7f2094eb2c95'
+        
     }
     stages {
         stage('Checkout Code') {

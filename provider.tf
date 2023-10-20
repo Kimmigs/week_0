@@ -13,6 +13,10 @@ terraform {
    encrypt = true
    dynamodb_table = "tf-s3-app-lock"
  }
+
+provider "aws" {
+  region = "us-east-1"
+  shared_credentials_file = ".aws/credentials"
+ }
 }
-
-
+ 
