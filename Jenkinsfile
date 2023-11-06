@@ -13,7 +13,14 @@ pipeline {
         stage('Terraform Init') {
             environment {
                 AWS_DEFAULT_REGION    = 'us-east-1'
-                SECRET_FILE_ID = credentials('1fef9a45-bc71-422c-a6b4-3107979f80f2')
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: "2ec9872b-cb15-4f2b-8ebe-00d17dd5ffb8",
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    // AWS Code
+                }
             }
             steps {
                 script {
@@ -22,6 +29,17 @@ pipeline {
             }
         }
         stage('Terraform Apply') {
+            environment {
+                AWS_DEFAULT_REGION    = 'us-east-1'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: "2ec9872b-cb15-4f2b-8ebe-00d17dd5ffb8",
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    // AWS Code
+                }
+            }
             steps {
                 script {
                     sh 'terraform apply -auto-approve'
@@ -29,6 +47,17 @@ pipeline {
             }
         }
         stage('Upload State to S3') {
+            environment {
+                AWS_DEFAULT_REGION    = 'us-east-1'
+                withCredentials([[
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: "2ec9872b-cb15-4f2b-8ebe-00d17dd5ffb8",
+                    accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                    secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                ]]) {
+                    // AWS Code
+                }
+            }
             steps {
                 script {
                     sh 'aws s3 cp terraform.tfstate s3://tf-remote-s3-bucket-kim-changehere'
