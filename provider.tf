@@ -14,3 +14,7 @@ terraform {
    dynamodb_table = "tf-s3-app-lock"
  } 
 }
+
+provider "aws" {
+  region = "us-east-1"
+}
