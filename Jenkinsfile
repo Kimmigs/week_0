@@ -28,10 +28,10 @@ pipeline {
                 }
             }
         }
-        stage('Upload State to S3') {
+        stage("Terraform Destroy") {
             steps {
                 script {
-                    sh 'aws s3 cp terraform.tfstate s3://tf-remote-s3-bucket-kim-changehere'
+                    sh 'terraform destroy --auto-approve'
                 }
             }
         }
