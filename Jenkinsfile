@@ -15,8 +15,6 @@ pipeline {
             }
         }
         stage('Terraform Init') {
-            environment {
-                AWS_DEFAULT_REGION    = 'us-east-1'
             steps {
                 script {
                     sh 'terraform init'
@@ -24,18 +22,13 @@ pipeline {
             }
         }
         stage('Terraform Apply') {
-            environment {
-                AWS_DEFAULT_REGION    = 'us-east-1'
             steps {
                 script {
-                    sh 'terraform apply -auto-approve'
+                    sh 'terraform apply --auto-approve'
                 }
             }
         }
         stage('Upload State to S3') {
-            environment {
-                AWS_DEFAULT_REGION    = 'us-east-1'
-
             steps {
                 script {
                     sh 'aws s3 cp terraform.tfstate s3://tf-remote-s3-bucket-kim-changehere'
