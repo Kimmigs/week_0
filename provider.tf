@@ -14,4 +14,3 @@ terraform {
    dynamodb_table = "tf-s3-app-lock"
  } 
 }
- 
